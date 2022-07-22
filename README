@@ -11,7 +11,7 @@ $ ./configure --with-websocket=path_to_simple_websocket_server
 Replace path with the Simple-websocket-library path.
 
 $ make
-$ sudo make install.
+$ sudo make install
 
 Also make sure that in /usr/local/incude the folder named Simple-Weibsocket-Server is present.
 
