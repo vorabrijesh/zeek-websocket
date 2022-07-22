@@ -1,0 +1,49 @@
+
+
+#ifndef ZEEK_PLUGIN_KAFKA_WebsocketWriter_H
+#define ZEEK_PLUGIN_KAFKA_WebsocketWriter_H
+#include <simple-websocket-server/server_ws.hpp>
+#include <simple-websocket-server/client_ws.hpp>
+#include <librdkafka/rdkafkacpp.h>
+#include <map>
+#include <string>
+#include <bits/stdc++.h>
+#include <zeek/Desc.h>
+#include <zeek/logging/WriterBackend.h>
+#include <zeek/threading/formatters/JSON.h>
+#include <zeek/threading/Formatter.h>
+#include <future>
+#include "websocket.bif.h"
+
+
+namespace zeek::logging::writer {
+
+/**
+ * A logging writer that sends data to a Kafka broker.
+ */
+class WebsocketWriter : public WriterBackend {
+
+public:
+    explicit WebsocketWriter(WriterFrontend* frontend);
+    ~WebsocketWriter();
+
+    static WriterBackend* Instantiate(WriterFrontend* frontend)
+    {
+        return new WebsocketWriter(frontend);
+    }
+
+protected:
+    virtual bool DoInit(const WriterBackend::WriterInfo& info, int num_fields, const threading::Field* const* fields);
+    virtual bool DoWrite(int num_fields, const threading::Field* const* fields, threading::Value** vals);
+    virtual bool DoSetBuf(bool enabled);
+    virtual bool DoRotate(const char* rotated_path, double open, double close, bool terminating);
+    virtual bool DoFlush(double network_time);
+    virtual bool DoFinish(double network_time);
+    virtual bool DoHeartbeat(double network_time, double current_time);
+private:
+    
+};
+
+}
+
+#endif

@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# Hooks to add custom options to the configure script.
+#
+
+plugin_usage()
+{
+    : # Do nothing
+#    cat <<EOF
+#    --with-foo=DIR          Path to foo
+     --with-websocket=PATH    path to Simple-Websocket-Server
+# EOF
+}
+
+plugin_option()
+{
+    case "$1" in
+#        --with-foo=*)
+#            append_cache_entry FOO_DIR PATH $optarg
+#            return 0
+#            ;;
+        --with-websocket=*)
+          append_cache_entry SimpleWebsocketServer_ROOT_DIR PATH "${optarg}"
+          return 0
+          ;;
+        *)
+            return 1;
+            ;;
+    esac
+}
+
+plugin_addl()
+{
+    : # Do nothing
+}
