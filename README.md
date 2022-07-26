@@ -7,16 +7,20 @@ MAke sure to install the Simple-websocket-library.
 
 Steps to configuring and installing
 ```
-$ ./configure --with-websocket=path_to_simple_websocket_server 
+$ ./configure --with-websocket=/usr/local
 ```
 Replace path with the Simple-websocket-library path.
 
 ```
+$ cd build/
+$ cmake ..
 $ make
-$ sudo make install
+$ make install
+$ zeek -N
 ```
+With the last command, you can see that the plugin included in the list.
 
-Also make sure that in /usr/local/incude the folder named Simple-Weibsocket-Server is present.
+Also make sure that in /usr/local/incude the folder named simple-websocket-server is present.
 
 Then collect the packets using tcpdump. 
 ```
