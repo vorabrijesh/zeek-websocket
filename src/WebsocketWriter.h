@@ -4,7 +4,6 @@
 #define ZEEK_PLUGIN_KAFKA_WebsocketWriter_H
 #include <simple-websocket-server/server_ws.hpp>
 #include <simple-websocket-server/client_ws.hpp>
-#include <librdkafka/rdkafkacpp.h>
 #include <map>
 #include <string>
 #include <bits/stdc++.h>
