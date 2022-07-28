@@ -12,7 +12,7 @@ if (SIMPLEWEBSOCKETSERVER_FOUND)
     zeek_plugin_cc(src/WebsocketWriter.cc)
     zeek_plugin_cc(src/Plugin.cc)
     zeek_plugin_bif(src/websocket.bif)
-    zeek_plugin_dist_files(README CHANGES COPYING VERSION)
+    zeek_plugin_dist_files(README.md CHANGES COPYING VERSION)
     zeek_plugin_scripts(
             scripts/__load__.zeek
             scripts/__preload__.zeek
