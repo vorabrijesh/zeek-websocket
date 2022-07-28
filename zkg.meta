@@ -1,0 +1,11 @@
+[package]
+description = A Zeek log writer plugin that publishes using Simple-Websocket-Server.
+tags = log writer, zeek plugin, Websocket
+script_dir = build/scripts/Ennetix/Websocket
+build_command = ./configure --with-websocket=%(WEBSOCKET_ROOT)s && cd build && cmake .. && make && cd ..
+plugin_dir = build
+depends =
+  zeek >=4.0.0
+  zkg >=2.0
+user_vars =
+  WEBSOCKET_ROOT [/usr/local] "Path to simple-websocket-server installation tree root"
