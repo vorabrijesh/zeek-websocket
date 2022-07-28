@@ -3,9 +3,26 @@ Ennetix::Websocket
 =================================
 This zeek plugin uses Simple-websocket-server: https://gitlab.com/eidheim/Simple-WebSocket-Server library to send the logs. 
 
-MAke sure to install the Simple-websocket-library.
+### Install using zkg
+In the zeek-Websocket direectory, run:
+```
+zkg install .
+```
 
-Steps to configuring and installing
+### Steps to install Simple-Websocket-Server:
+
+```
+sudo apt-get install libboost-all-dev
+git clone https://gitlab.com/eidheim/Simple-WebSocket-Server.git
+cd Simple-WebSocket-Server
+mkdir build
+cd build/
+cmake ..
+make
+make install
+```
+
+### Steps to manually configuring and installing
 ```
 $ ./configure --with-websocket=/usr/local
 ```
@@ -22,6 +39,7 @@ With the last command, you can see that the plugin included in the list.
 
 Also make sure that in /usr/local/incude the folder named simple-websocket-server is present.
 
+### Running the sample code
 Then collect the packets using tcpdump. 
 ```
 $ sudo tcpdump -s 0 -w get.trace
