@@ -13,11 +13,11 @@ if (SIMPLEWEBSOCKETSERVER_FOUND)
     zeek_plugin_cc(src/Plugin.cc)
     zeek_plugin_bif(src/websocket.bif)
     zeek_plugin_dist_files(README CHANGES COPYING VERSION)
-    zeek_plugin_scripts(
-            scripts/__load__.zeek
-            scripts/__preload__.zeek
-            scripts/types.zeek
-            scripts/Ennetix/Websocket/__load__.zeek)
+    # zeek_plugin_scripts(
+    #         scripts/__load__.zeek
+    #         scripts/__preload__.zeek
+    #         scripts/types.zeek
+    #         scripts/Ennetix/Websocket/__load__.zeek)
     zeek_plugin_link_library(${SimpleWebsocketServer_LIBRARIES})
     zeek_plugin_end()
 
