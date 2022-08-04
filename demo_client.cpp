@@ -1,31 +1,21 @@
 #include "client_ws.hpp"
 #include "server_ws.hpp"
 #include <future>
-
+#include <unistd.h>
 using namespace std;
 
 using WsServer = SimpleWeb::SocketServer<SimpleWeb::WS>;
 using WsClient = SimpleWeb::SocketClient<SimpleWeb::WS>;
 
 int main() {
- 
-  // Example 4: Client communication with server
-  // Possible output:
-  //   Server: Opened connection 0x7fcf21600380
-  //   Client: Opened connection
-  //   Client: Sending message: "Hello"
-  //   Server: Message received: "Hello" from 0x7fcf21600380
-  //   Server: Sending message "Hello" to 0x7fcf21600380
-  //   Client: Message received: "Hello"
-  //   Client: Sending close connection
-  //   Server: Closed connection 0x7fcf21600380 with status code 1000
-  //   Client: Closed connection with status code 1000
+
   WsClient client("localhost:8080/echo");
   client.on_message = [](shared_ptr<WsClient::Connection> connection, shared_ptr<WsClient::InMessage> in_message) {
     cout << "Client: Message received: \"" << in_message->string() << "\"" << endl;
-
-    cout << "Client: Sending close connection" << endl;
-    connection->send_close(1000);
+    sleep(5);
+     connection->send("out_message");
+    // cout << "Client: Sending close connection" << endl;
+    // connection->send_close(1000);
   };
 
   client.on_open = [](shared_ptr<WsClient::Connection> connection) {
