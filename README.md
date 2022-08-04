@@ -6,20 +6,15 @@ This zeek plugin uses Simple-websocket-server: https://gitlab.com/eidheim/Simple
 ### Install using zkg
 In the zeek-Websocket direectory, run:
 ```
-zkg install .
+$ zkg install .
 ```
 
 ### Steps to install Simple-Websocket-Server:
 
 ```
-sudo apt-get install libboost-all-dev
-git clone https://gitlab.com/eidheim/Simple-WebSocket-Server.git
-cd Simple-WebSocket-Server
-mkdir build
-cd build/
-cmake ..
-make
-make install
+$ sudo apt-get install libboost-all-dev
+$ git clone https://gitlab.com/eidheim/Simple-WebSocket-Server.git
+$ cd Simple-WebSocket-Server && mkdir build && cd build/ && cmake .. && make && make install
 ```
 
 ### Steps to manually configuring and installing
@@ -29,17 +24,27 @@ $ ./configure --with-websocket=/usr/local
 Replace path with the Simple-websocket-library path.
 
 ```
-$ cd build/
-$ cmake ..
-$ make
-$ make install
+$ cd build/ && cmake .. && make && make install
 $ zeek -N
 ```
 With the last command, you can see that the plugin included in the list.
 
-Also make sure that in /usr/local/incude the folder named simple-websocket-server is present.
+Make sure that in /usr/local/incude the folder named simple-websocket-server is present.
 
-### Running the sample code
+
+Also shift the demo_client.cpp to simple-websocket-server folder and run the client
+```
+$ g++ demo_client.cpp -o demo_client -L/usr/lib -lssl -lcrypto 
+$ ./demo_client
+```
+
+### Runnign the sample code using live traffic
+
+```
+$ zeek -i <interface> send_logs.zeek
+```
+
+### Running the sample code using pcap file
 Then collect the packets using tcpdump. 
 ```
 $ sudo tcpdump -s 0 -w get.trace
@@ -51,8 +56,3 @@ Run:
 $ Zeek -C -r get.trace send_logs.zeek
 ```
 
-Also shift the demo_client.cpp to simple-websocket-server folder and run 
-```
-$ g++ demo_client.cpp -o demo_client -L/usr/lib -lssl -lcrypto 
-$ ./demo_client
-```
