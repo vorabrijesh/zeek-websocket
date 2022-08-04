@@ -4,7 +4,7 @@ Ennetix::Websocket
 This zeek plugin uses Simple-websocket-server: https://gitlab.com/eidheim/Simple-WebSocket-Server library to send the logs. 
 
 ### Install using zkg
-In the zeek-Websocket direectory, run:
+In the zeek-Websocket directory, run:
 ```
 $ zkg install .
 ```
@@ -38,7 +38,7 @@ $ g++ demo_client.cpp -o demo_client -L/usr/lib -lssl -lcrypto
 $ ./demo_client
 ```
 
-### Runnign the sample code using live traffic
+### Running the sample code using live traffic
 
 ```
 $ zeek -i <interface> send_logs.zeek
@@ -48,11 +48,6 @@ $ zeek -i <interface> send_logs.zeek
 Then collect the packets using tcpdump. 
 ```
 $ sudo tcpdump -s 0 -w get.trace
-```
-Right now, the zeek-server just send hello msgs to and fro but can be implemented to logs also.
-
-Run:
-```
 $ Zeek -C -r get.trace send_logs.zeek
 ```
 
