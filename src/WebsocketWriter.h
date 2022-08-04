@@ -12,6 +12,7 @@
 #include <zeek/threading/formatters/JSON.h>
 #include <zeek/threading/Formatter.h>
 #include <future>
+#include <pthread.h>
 #include "websocket.bif.h"
 
 
@@ -40,7 +41,7 @@ protected:
     virtual bool DoFinish(double network_time);
     virtual bool DoHeartbeat(double network_time, double current_time);
 private:
-    
+    threading::Formatter *formatter;
 };
 
 }
