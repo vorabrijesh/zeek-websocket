@@ -1,5 +1,3 @@
-
-
 #ifndef ZEEK_PLUGIN_KAFKA_WebsocketWriter_H
 #define ZEEK_PLUGIN_KAFKA_WebsocketWriter_H
 #include <simple-websocket-server/server_ws.hpp>
@@ -15,7 +13,7 @@
 #include <pthread.h>
 #include "websocket.bif.h"
 
-
+using WsServer = SimpleWeb::SocketServer<SimpleWeb::WS>;
 namespace zeek::logging::writer {
 
 /**
@@ -42,6 +40,10 @@ protected:
     virtual bool DoHeartbeat(double network_time, double current_time);
 private:
     threading::Formatter *formatter;
+    int only_once;
+    WsServer server;
+    std::thread server_thread;
+    std::string input_log;
 };
 
 }

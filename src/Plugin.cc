@@ -7,9 +7,11 @@ using namespace plugin::Ennetix_Websocket;
 
 zeek::plugin::Configuration Plugin::Configure()
 	{
-		AddComponent(new zeek::logging::Component("WebsocketWriter",
-        zeek::logging::writer::WebsocketWriter::Instantiate));
-
+	auto loggingComponent = new zeek::logging::Component(
+	"WebsocketWriter",
+	zeek::logging::writer::WebsocketWriter::Instantiate
+	);
+	AddComponent(loggingComponent);
 	zeek::plugin::Configuration config;
 	config.name = "Ennetix::Websocket";
 	config.description = "Send logs via simple-websocket-server, developed by Ennetix";
