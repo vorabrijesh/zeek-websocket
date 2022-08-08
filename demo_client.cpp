@@ -8,12 +8,16 @@ using WsServer = SimpleWeb::SocketServer<SimpleWeb::WS>;
 using WsClient = SimpleWeb::SocketClient<SimpleWeb::WS>;
 
 int main() {
+ 
 
   WsClient client("localhost:8080/echo");
-  client.on_message = [](shared_ptr<WsClient::Connection> connection, shared_ptr<WsClient::InMessage> in_message) {
+  client.on_message = [](
+    shared_ptr<WsClient::Connection> connection, 
+    shared_ptr<WsClient::InMessage> in_message
+  ) {
     cout << "Client: Message received: \"" << in_message->string() << "\"" << endl;
     sleep(5);
-     connection->send("out_message");
+    connection->send("out_message");
     // cout << "Client: Sending close connection" << endl;
     // connection->send_close(1000);
   };
