@@ -1,8 +1,8 @@
-
-#pragma once
+#ifndef ZEEK_PLUGIN_WEBSOCKET
+#define ZEEK_PLUGIN_WEBSOCKET
 
 #include <zeek/plugin/Plugin.h>
-#include "WebsocketWriter.h"
+#include "WebsocketWriter.hpp"
 
 namespace plugin {
 namespace Ennetix_Websocket {
@@ -18,3 +18,5 @@ extern Plugin plugin;
 
 }
 }
+
+#endif

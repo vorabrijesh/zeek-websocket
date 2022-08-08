@@ -1,15 +1,13 @@
-
 #include "Plugin.h"
 
 namespace plugin { namespace Ennetix_Websocket { Plugin plugin; } }
 
 using namespace plugin::Ennetix_Websocket;
 
-zeek::plugin::Configuration Plugin::Configure()
-	{
+zeek::plugin::Configuration Plugin::Configure() {
 	auto loggingComponent = new zeek::logging::Component(
-	"WebsocketWriter",
-	zeek::logging::writer::WebsocketWriter::Instantiate
+	  "WebsocketWriter",
+	  zeek::logging::writer::WebsocketWriter::Instantiate
 	);
 	AddComponent(loggingComponent);
 	zeek::plugin::Configuration config;
@@ -19,4 +17,4 @@ zeek::plugin::Configuration Plugin::Configure()
 	config.version.minor = 1;
 	config.version.patch = 0;
 	return config;
-	}
+}

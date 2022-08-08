@@ -14,10 +14,11 @@
 #include "websocket.bif.h"
 
 using WsServer = SimpleWeb::SocketServer<SimpleWeb::WS>;
+
 namespace zeek::logging::writer {
 
 /**
- * A logging writer that sends data to a Kafka broker.
+ * A logging writer that sends data to a websockets
  */
 class WebsocketWriter : public WriterBackend {
 
